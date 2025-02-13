@@ -29,7 +29,7 @@ int main(){
 
 	for (int i = 0; i < n; i++){
 		do{
-			printf("Digite o nome e o símbolo do Competidor %02d:\n", i+1);
+			printf("Digite o nome e o símbolo do Competidor %02d: ", i+1);
 			scanf(" %s %c", corrida[i].nome, &corrida[i].simbolo);
 			
 			if(strlen(corrida[i].nome) > LIMITE){
