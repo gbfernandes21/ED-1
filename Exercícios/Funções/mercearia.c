@@ -183,6 +183,9 @@ int main(){
 			case 3: relatorio(estoque, cont_prod);
 			break;
 			case 0: return 0;
+			default: printf("Opção Inválida! Tente Novamente...\n");
+				wait();
+				break;
 		}
 	}while(1);
 }
