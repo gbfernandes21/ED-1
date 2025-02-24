@@ -56,6 +56,9 @@ Produto cadastrarProduto(Produto* p, int cont){
 	scanf(" %f", &novo.valor);
 	printf("Qtde. em Estoque: ");
 	scanf(" %d", &novo.estoque);
+
+	printf("\nProduto Cadastrado com Sucesso!\n\n");
+	imprimirProduto(novo);
 	wait();
 	
 	return novo;
@@ -145,7 +148,7 @@ void carrinho(Produto* p, int tam){
 }
 
 void imprimirProduto(Produto p){
-	printf("Código: %03d\n\nDesc. do Produto: %s\nValor Unitário: %.2f\nQtde. em Estoque: %d\n------------------------------------------\n\n"
+	printf("Código: %03d\n\nDesc. do Produto: %s\nValor Unitário: R$ %.2f\nQtde. em Estoque: %d\n------------------------------------------\n\n"
 	, p.cod, p.desc, p.valor, p.estoque);
 }
 
