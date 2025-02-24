@@ -99,8 +99,8 @@ int buscar(Produto* p, int tam, int alvo){
 			break;
 		}else if(p[meio].cod > alvo)
 				fim = meio-1;
-				else
-					inicio = meio+1;
+			else
+				inicio = meio+1;
 	}
 	return -1;
 }
