@@ -61,7 +61,8 @@ float venderProduto(Produto* p){
 	system("clear");
 	int qnt;
 	printf("========== VENDAS ==========\n");
-	printf("Produto: %s\nQtde. em Estoque: %d\nUnidades Solicitadas: ", p->desc, p->estoque);
+	printf("Produto: %s\nQtde. em Estoque: %d\nUnidades Solicitadas: "
+	, p->desc, p->estoque);
 	scanf(" %d", &qnt);
 	
 	if(qnt > p->estoque){
