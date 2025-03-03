@@ -279,7 +279,7 @@ void historicoAluno(Discente* a, int cont_a, Disciplina* m, int cont_m){
 			break;
 	}
 	
-	printf("\nAluno: %s\tCódigo de Matrícula: %03d\tCoef. de Rendimento: %.2f\n\n",
+	printf("\nAluno: %s\tCód. de Matrícula: %03d\tCoef. de Rendimento: %.2f\n\n",
 	 a[id].nome, a[id].matricula, a[id].cr);
 	 
 	for (int i = 0; i < a[id].cont; i++)
@@ -299,7 +299,7 @@ void ranking(Discente* a, int cont_a){
 	puts("---------------------------------------------------------------------------------------");
 	
 	for (int i = 0; i < cont_a; i++)
-		printf("\n| ALUNO: %s | CÓDIGO DE MATRÍCULA: %03d | COEF. DE RENDIMENTO: %.2f |\n------"
+		printf("\n| ALUNO: %s | CÓD. MATRÍCULA: %03d | COEF. DE RENDIMENTO: %.2f |\n------"
 		,a[i].nome, a[i].matricula, a[i].cr);
 	wait();
 }	
