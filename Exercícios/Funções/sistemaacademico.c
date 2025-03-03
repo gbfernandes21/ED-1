@@ -162,19 +162,18 @@ void ordenar(Discente* a, int cont_a){
 			}
 }
 
-
 void lancaNotas(Discente* a, int cont_a, Disciplina* m, int cont_m){
 	system("clear");
 	char nome[50], disciplina[50];
-	int i,j;
+	int id,jd;
 	puts("-------------------------------------------------------------");
 	puts("                        LANÇAR NOTAS");
 	puts("-------------------------------------------------------------");
 	while(1){
 		input("Digite o Nome do Aluno [exit para ENCERRAR]: ", STR, nome);
 		if(!strcmp(nome, "exit")) return;
-		i = buscarAluno(nome, a, cont_a);
-		if(i<0){
+		id = buscarAluno(nome, a, cont_a);
+		if(id<0){
 			printf("Aluno Não Encontrado! Tente Novamente");
 			wait();
 		}else
@@ -183,8 +182,8 @@ void lancaNotas(Discente* a, int cont_a, Disciplina* m, int cont_m){
 	
 	while(1){
 		input("Nome da Disciplina: ", STR, disciplina);
-		j = buscarMateria(disciplina, m, cont_m);
-		if(j<0){
+		jd = buscarMateria(disciplina, m, cont_m);
+		if(jd<0){
 			printf("Disciplina Não Encontrada!");
 			wait();
 		}else 
@@ -193,8 +192,8 @@ void lancaNotas(Discente* a, int cont_a, Disciplina* m, int cont_m){
 	
 	int mat = 0;
 	
-	for(int k = 0; k < m[j].cont; k++)
-		if(a[i].matricula == m[j].discentes[k].matricula){
+	for(int i = 0; i < m[jd].cont; i++)
+		if(a[id].matricula == m[jd].discentes[i].matricula){
 			mat = 1;
 			break;
 		}
@@ -205,8 +204,8 @@ void lancaNotas(Discente* a, int cont_a, Disciplina* m, int cont_m){
 		return;
 	}
 	
-	for (int k = 0; k < a[i].cont; k++)
-		if(a[i].notas[0][k] == m[j].codigo){
+	for (int j = 0; j < a[id].cont; j++)
+		if(a[id].notas[0][j] == m[jd].codigo){
 			printf("A Nota do Aluno já foi Lançada!\n");
 			wait();
 			return;
@@ -216,10 +215,10 @@ void lancaNotas(Discente* a, int cont_a, Disciplina* m, int cont_m){
 	
 	input("Informe a Nota do aluno: ", INT, &nota);
 	
-	a[i].notas[0][a[i].cont] = m[j].codigo;
-	a[i].notas[1][a[i].cont] = nota;
-	a[i].cont++;
-	a[i].cr = calculaCr(a[i]);
+	a[id].notas[0][a[id].cont] = m[jd].codigo;
+	a[id].notas[1][a[id].cont] = nota;
+	a[id].cont++;
+	a[id].cr = calculaCr(a[id]);
 	ordenar(a, cont_a);
 	printf("Nota Lançada com Sucesso!\n");
 	wait();
@@ -302,7 +301,6 @@ void ranking(Discente* a, int cont_a){
 	for (int i = 0; i < cont_a; i++)
 		printf("\n| ALUNO: %s | CÓDIGO DE MATRÍCULA: %03d | COEF. DE RENDIMENTO: %.2f |\n------"
 		,a[i].nome, a[i].matricula, a[i].cr);
-		
 	wait();
 }	
 
