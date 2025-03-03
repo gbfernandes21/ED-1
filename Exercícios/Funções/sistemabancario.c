@@ -42,11 +42,6 @@ void gerarCodigo(int* cod){
 	cod[4] = v;
 }
 
-void zerar(ContaBancaria* c, int tam){
-	for (int i = 0; i < tam; i++)
-		c[i].saldo = 0;
-}
-
 ContaBancaria abrirConta(){
 	ContaBancaria nova;
 	system("clear");
@@ -55,6 +50,7 @@ ContaBancaria abrirConta(){
 	puts("-------------------------------------------");
 	input("Informe o Nome do Titular da Conta: ", STR, nova.nome);
 	gerarCodigo(nova.codigo);
+	nova.saldo = 0;
 	
 	printf("Conta Aberta com Sucesso!\n\nSeja Bem-vindo(a) ao nosso Banco!\n\n");
 	mostrarConta(nova);
@@ -189,7 +185,6 @@ void depositar(ContaBancaria* c, int tam){
 int main(){
 	srand(time(NULL));
 	ContaBancaria contas[100];
-	zerar(contas, 100);
 	int cont = 0;
 	
 	while(1){
