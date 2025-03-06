@@ -37,6 +37,7 @@ int interface(){
 	printf("0 - ENCERRAR\n");
 	printf("\n--------------------------------\n");
 	input("\nOpção: ", INT, &op);
+	while(getchar() != '\n');
 	
 	return op;
 }
@@ -46,26 +47,32 @@ Corredor cadastrarMaratonista(int c){
 	Corredor novo;
 	input("Nome do Corredor: ", STR, novo.nome);
 	input("Sexo [1 - (Masc) / 2 - (Fem)]: ", INT, &novo.sexo);
+	while(getchar() != '\n');
 	while(novo.sexo != MASC && novo.sexo != FEM){
 		input("Dígito Inválido!\nTente Novamente: ",
 		 INT, &novo.sexo);
+		while(getchar() != '\n');
 	}
 	
 	if(novo.sexo == MASC){
 		input("Digite a Categoria\n1 - Profissional Masc.\n2 - Amador Masc.\n"
 		, INT, &novo.categoria);
+		while(getchar() != '\n');
 		while(novo.categoria != PM && novo.categoria != AM){
 			input("Dígito Inválido!\nTente Novamente: "
 			, INT, &novo.categoria);
+			while(getchar() != '\n');
 		}
 	}
 	
 	if(novo.sexo == FEM){
 		input("Digite a Categoria\n1 - Profissional Fem.\n2 - Amador Fem.\n"
 		, INT, &novo.categoria);
+		while(getchar() != '\n');
 		while(novo.categoria != PF && novo.categoria != AF){
 			input("Dígito Inválido!\nTente Novamente: "
 			, INT, &novo.categoria);
+			while(getchar() != '\n');
 		}
 	}
 		
