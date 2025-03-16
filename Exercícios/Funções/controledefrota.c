@@ -59,14 +59,12 @@ void zerar(int* p, int cont){
 
 void passagens_vendidas(int cont, int* p, int max){
 	int i = 0;
-	do{
+	while(i < cont){
 		int pos = rand()%max;
-		if (p[pos])
-			continue;
-		else
-			p[pos] = 1;
+		if (p[pos]) continue;
+		p[pos] = 1;
 		i++;
-	}while(i < cont);
+	}
 }
 
 Veiculo cadastrarVeiculo(int cod){
@@ -145,10 +143,8 @@ void printPoltronas(int* p, int cont, int alvo){
 }
 
 int checkAssento(int assento, int* p){
-	if(!p[assento-1])
-		return 1;
-	else
-		return 0;
+	if(!p[assento-1]) return 1;
+	return 0;
 }
 
 int contPoltronas(int* p, int cont, int alvo){
@@ -237,8 +233,8 @@ void venderPassagem(Viagem* v, int cont){
 }
 
 void printVeiculo(Veiculo v){
-	printf("Placa: %s\tQtde. Máxima de Passageiros: %d\tCódigo: %03d\n",
-	v.placa, v.passageiros, v.codigo);
+	printf("Placa: %s\tQtde. Máxima de Passageiros: %d\tCódigo: %03d\tManutenção: %s\n",
+	v.placa, v.passageiros, v.codigo, (v.manutencao ? "SIM" : "NÃO"));
 }
 
 void viagensRelacionadas(int cod, Viagem* v, int cont){
