@@ -66,6 +66,7 @@ int interface(){
 }
 
 Dia cadastrar_show(int cod){
+	system("clear");
 	Dia novo;
 	
 	printf("Informe a atração principal do dia: ");
