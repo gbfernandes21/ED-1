@@ -211,7 +211,8 @@ void print_ingresso(Ingresso ing){
 int busca_ingresso_cpf(char* cpf, Dia* d, int cont){
 	int achou = 0;
 	int baixado = 0;
-	
+
+	printf("\n");
 	for (int i = 0; i < cont; i++){
 		Ingresso* ingressos = d[i].ingressos;
 		int cont_ing = d[i].cont_ingressos;
