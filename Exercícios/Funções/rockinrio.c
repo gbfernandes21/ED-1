@@ -204,12 +204,13 @@ void relatorio_ingressos(Dia* d, int cont){
 }
 
 void print_ingresso(Ingresso ing){
-	printf("| Nome: %s\t| Headliner: %s\t| Token: %s\t| Valor: R$ %.2f |\n----------\n",
+	printf("| Nome: %s\t| Headliner: %s\t| Token: %s | Valor: R$ %.2f |\n----------\n",
 	ing.nome, ing.headLiner, ing.token, ing.valor);
 }
 
 int busca_ingresso_cpf(char* cpf, Dia* d, int cont){
 	int achou = 0;
+	int baixado = 0;
 	
 	for (int i = 0; i < cont; i++){
 		Ingresso* ingressos = d[i].ingressos;
@@ -217,10 +218,15 @@ int busca_ingresso_cpf(char* cpf, Dia* d, int cont){
 		for (int j = 0; j < cont_ing; j++)
 			if(!strcmp(cpf, ingressos[j].cpf)){
 				achou = 1;
-				print_ingresso(ingressos[j]);
-				strcpy(ingressos[j].token, "0");
+				if(strcmp(ingressos[j].token, "0")){
+					print_ingresso(ingressos[j]);
+					strcpy(ingressos[j].token, "0");
+				}else 
+					baixado = 1;
 			}
 	}
+	
+	if(baixado) printf("Os ingressos já foram baixados!\n");
 	
 	return achou;
 }
