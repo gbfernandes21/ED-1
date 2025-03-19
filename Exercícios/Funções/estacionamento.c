@@ -15,7 +15,9 @@ int existe(char* alvo, Cliente* e, int cont);
 void wait();
 void limite();
 void print_cliente(Cliente e);
+void retira_carro(Cliente* e);
 void sair(Cliente* e, int cont);
+void estaciona_carro(Cliente* e);
 void relatorio(Cliente* e, int cont);
 void cadastro_estacionamento(Cliente* e, int cont);
 Cliente cadastrar_cliente(Cliente* e, int cont);
@@ -79,6 +81,19 @@ void cadastro_estacionamento(Cliente* e, int cont){
 	e[cont] = cadastrar_cliente(e, cont);
 }
 
+void estaciona_carro(Cliente* e){
+		if(e->estacionado){
+			printf("Este veículo já está estacionado!\n");
+			wait();
+			return;
+		}
+		
+		e->estacionado = 1;
+		e->cont++;
+		printf("Veículo estacionado com Sucesso!\n");
+		wait();
+}
+
 int estacionar(Cliente* e, int cont){
 	system("clear");
 	char placa[50];
@@ -105,29 +120,29 @@ int estacionar(Cliente* e, int cont){
 	}
 	
 	if(!var){
-		if(e[pos].estacionado){
-			printf("Este veículo já está estacionado!\n");
-			wait();
-			return 1;
-		}
-		
-		e[pos].estacionado = 1;
-		e[pos].cont++;
-		printf("Veículo estacionado com Sucesso!\n");
-		wait();
+		estaciona_carro(&e[pos]);
 		return 1;
 	}else{
-		e[cont].estacionado = 1;
-		e[cont].cont++;
-		printf("Veículo estacionado com Sucesso!\n");
-		wait();
+		estaciona_carro(&e[cont]);
 		return 0;
 	}
 }
 
+void retira_carro(Cliente* e){
+	if(!e->estacionado){
+		printf("Este veículo não se encontra no estacionamento!");
+		wait();
+		return;
+	}
+	
+	e->estacionado = 0;
+	e->cont++;
+	printf("Saída realizada com Sucesso\n");
+	wait();
+}
+
 void sair(Cliente* e, int cont){
 	system("clear");
-	
 	if(!cont){
 		printf("(Estacionamento vazio)\n");
 		wait();
@@ -145,17 +160,7 @@ void sair(Cliente* e, int cont){
 		wait();
 		return;
 	}
-	
-	if(!e[pos].estacionado){
-		printf("Este veículo não se encontra no estacionamento!");
-		wait();
-		return;
-	}
-	
-	e[pos].estacionado = 0;
-	e[pos].cont++;
-	printf("Saída realizada com Sucesso\n");
-	wait();
+	retira_carro(&e[pos]);
 }
 
 void print_cliente(Cliente e){
@@ -164,7 +169,6 @@ void print_cliente(Cliente e){
 
 void relatorio(Cliente* e, int cont){
 	system("clear");
-	
 	if(!cont){
 		printf("(Vazio)\n");
 		wait();
