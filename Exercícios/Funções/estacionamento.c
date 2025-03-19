@@ -17,6 +17,7 @@ void limite();
 void print_cliente(Cliente e);
 void sair(Cliente* e, int cont);
 void relatorio(Cliente* e, int cont);
+void cadastro_estacionamento(Cliente* e, int cont);
 Cliente cadastrar_cliente(Cliente* e, int cont);
 
 void wait(){
@@ -72,6 +73,12 @@ Cliente cadastrar_cliente(Cliente* e, int cont){
 	return novo;
 }
 
+void cadastro_estacionamento(Cliente* e, int cont){
+	printf("Olá! Para estacionar, realize seu cadastro primeiro.\n[Tecle ENTER]\n");
+	wait();
+	e[cont] = cadastrar_cliente(e, cont);
+}
+
 int estacionar(Cliente* e, int cont){
 	system("clear");
 	char placa[50];
@@ -79,9 +86,7 @@ int estacionar(Cliente* e, int cont){
 	
 	if(!cont){
 		var = 1;
-		printf("Olá! Para estacionar, realize seu cadastro primeiro.\n[Tecle ENTER]\n");
-		wait();
-		e[cont] = cadastrar_cliente(e, cont);
+		cadastro_estacionamento(e, cont);
 	}else{
 		printf("Placa [exit para sair]: ");
 		scanf("%[^\n]s", placa);
@@ -89,11 +94,9 @@ int estacionar(Cliente* e, int cont){
 		
 		pos = existe(placa, e, cont);
 		if(pos < 0){
-			printf("Este veículo não está cadastrado em nosso sistema.\nVou te redirecionar para tela de cadastro.\n");
-			wait();
 			if(cont < MAX_VEICULOS){
 				var = 1;
-				e[cont] = cadastrar_cliente(e, cont);
+				cadastro_estacionamento(e, cont);
 			}else{
 				limite();
 				return 1;
