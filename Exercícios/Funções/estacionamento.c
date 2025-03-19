@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define STRING 50
+#define MAX_VEICULOS 100
+
 typedef struct{
-	char nome[50], carro[50], placa[50];
+	char nome[STRING], carro[STRING], placa[STRING];
 	int estacionado, cont;
 }Cliente;
-
-#define MAX_VEICULOS 100
 
 int interface();
 int estacionar(Cliente* e, int cont);
@@ -16,7 +17,7 @@ void wait();
 void limite();
 void print_cliente(Cliente e);
 void retira_carro(Cliente* e);
-void sair(Cliente* e, int cont);
+void retirar(Cliente* e, int cont);
 void estaciona_carro(Cliente* e);
 void relatorio(Cliente* e, int cont);
 void cadastro_estacionamento(Cliente* e, int cont);
@@ -141,7 +142,7 @@ void retira_carro(Cliente* e){
 	wait();
 }
 
-void sair(Cliente* e, int cont){
+void retirar(Cliente* e, int cont){
 	system("clear");
 	if(!cont){
 		printf("(Estacionamento vazio)\n");
@@ -197,7 +198,7 @@ int main(){
 			} break;
 			case 2: if(!estacionar(estacionamento, cont)) cont++;
 			break;
-			case 3: sair(estacionamento, cont);
+			case 3: retirar(estacionamento, cont);
 			break;
 			case 4: relatorio(estacionamento, cont);
 			break;
