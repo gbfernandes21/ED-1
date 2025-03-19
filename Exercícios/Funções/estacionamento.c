@@ -79,7 +79,7 @@ int estacionar(Cliente* e, int cont){
 	
 	if(!cont){
 		var = 1;
-		printf("Olá! Para estacionar, realize seu cadastro primeiro.\n[Digite ENTER]\n");
+		printf("Olá! Para estacionar, realize seu cadastro primeiro.\n[Tecle ENTER]\n");
 		wait();
 		e[cont] = cadastrar_cliente(e, cont);
 	}else{
