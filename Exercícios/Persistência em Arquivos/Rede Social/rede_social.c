@@ -1,6 +1,3 @@
-/*GABRIEL FERNANDES DOS SANTOS
- * 07/04/2025*/
-
 enum ARQUIVOS {USER = 0, POST};
 
 #include <stdio.h>
